@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Convert all flac files (recursively) in folder `Collection` in place from flac
+# to mp3 using ffmpeg, for use on an iPhone. Because these things don't have an
+# SD card slot either mp3 gives some filesize savings over alac (apple codec).
+#
+# WARNING: Destructive. Copy the folder before running.
+#
+
+for i in Collection/**/*.flac; do
+    echo "$i"
+    ffmpeg -i "$i" -ab 320k -map_metadata 0 -id3v2_version 3 "${i%.flac}".mp3
+    rm -f "$i";
+done
+
