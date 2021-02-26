@@ -1,0 +1,4 @@
+#!/bin/sh
+ecryptfs-add-passphrase
+mount.ecryptfs_private Encrypted
+
